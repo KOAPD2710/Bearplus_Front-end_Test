@@ -10,7 +10,7 @@
 * {
 	font-family: 'Inter', sans-serif;
 	box-sizing: border-box;
-	// text-decoration: none;
+	text-decoration: none;
 	-moz-transform: perspective(1000px);
 	-moz-transform-style: preserve-3d;
 	-ms-overflow-style: none;
@@ -130,7 +130,7 @@ a.email {
 	height: 100vh;
 	z-index: 999999999999999;
 	background: var(--primary-blue);
-	display: none;
+	// display: none;
 
 	svg{
 		width: 300px;
@@ -359,7 +359,7 @@ a.email {
 		pointer-events: none;
 		z-index: 12;
 
-		img.imgAbout {
+		.imgAbout {
 			position: relative;
 			margin-left: auto;
 			translate: 50% 0%;
@@ -394,7 +394,7 @@ a.email {
 	background: var(--secondary-white-90);
 	padding: 100px 0px 180px 0px;
 
-	img.imgStory {
+	.imgStory {
 		position: absolute;
 		top: 0%;
 		left: 0;
@@ -779,7 +779,6 @@ a.email {
 
 @media screen and (max-width: 767px) {
 	.grid-container {
-
 		.grid {
 			padding: 0 20px;
 			.gr:not(.gr-1) {
@@ -834,6 +833,7 @@ a.email {
 	}
 	.about {
 		padding-top: 120px;
+		padding-bottom: 200px;
 
 		.img-container{
 			top: 0;
@@ -847,15 +847,18 @@ a.email {
 		z-index: 1;
 	}
 	.story {
-		padding-top: 100px;
+		position: relative;
+		padding-top: 150px;
 		padding-bottom: 80px;
-		img.imgStory {
-			width: 80%;
+		// overflow: hidden;
+
+		.imgStory {
+			width: 70%;
 			position: absolute;
-			top: -10%;
+			top: -20%;
 			left: 50%;
-			translate: -50% -50%;
-			margin: 0px auto;
+			translate: -50%;
+			margin: auto;
 			z-index: 0;
 		}
 	}

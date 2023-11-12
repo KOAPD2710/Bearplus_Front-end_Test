@@ -116,16 +116,15 @@ function loading() {
 		duration: 1.5,
 		ease: "back.out(1.7)",
 	}, 8.5).from("#herosection .svg-container", {
-		y: 500,
+		y: 600,
 		duration: 2.5,
 		ease: "sine.out",
-		delay: 2,
 		onComplete: () => {
 			gsap.fromTo(miniTowers,{
 				y: 300
 			}, {
 				y: 20,
-				ease: "sine.out",
+				ease: "back.out(1.3)",
 				duration: 2,
 				stagger: {
 					each: .08,
@@ -134,7 +133,7 @@ function loading() {
 			gsap.from(miniTowers, {
 				opacity: 0,
 				ease: "sine.out",
-				duration: 1.5,
+				duration: 0.5,
 				stagger: {
 					each: .08,
 				},
@@ -197,7 +196,7 @@ function loading() {
 }
 
 function index() {
-	// loading();
+	loading();
 
 	new Cursor('#cursor');
 
@@ -399,6 +398,28 @@ function index() {
 		},
 		opacity: 0,
 		duration: .6,
+		ease: 'none'
+	})
+	gsap.from('#product .imgProduct1', {
+		scrollTrigger: {
+			trigger: '#product .imgProduct1',
+			start: 'top bottom',
+		},
+		y: 100,
+		opacity: 0,
+		duration: .6,
+		toggleActions: 'play resume resume reset',
+		ease: 'none'
+	})
+	gsap.from('#product .imgProduct2', {
+		scrollTrigger: {
+			trigger: '#product .imgProduct2',
+			start: 'top bottom',
+		},
+		y: 100,
+		opacity: 0,
+		duration: .6,
+		toggleActions: 'play resume resume reset',
 		ease: 'none'
 	})
 
