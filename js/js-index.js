@@ -415,9 +415,9 @@ class Cursor {
 		this.pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
 		this.set = {};
 
-		var aLinks = gsap.utils.toArray('a');
+		var aLinks = gsap.utils.toArray('a, button');
 		const classNameToFilter = 'notThis';
-		const filteredaLinks = aLinks.filter(aLinks => !aLinks.classList.contains(classNameToFilter));
+		this.filteredaLinks = aLinks.filter(aLinks => !aLinks.classList.contains(classNameToFilter));
 
 		// Create quickSetters
 		this.set.x 	= gsap.quickSetter(this.cursor, "x", "px");
@@ -426,14 +426,48 @@ class Cursor {
 
 		// Run on Mouse Move
 		const setFromEvent = (e) => {
-			const x = e.clientX;
-			const y = e.clientY;
-			gsap.to(this.pos, {
-				x: x,
-				y: y,
-				duration: this.speed,
-				ease: "expo.out",
+
+			let isOverLink = false;
+
+			this.filteredaLinks.forEach(function(link) {
+				link.addEventListener('mouseenter', function() {
+					var target = link.getBoundingClientRect();
+					var xTarget = target.left;
+					var yTarget = target.top;
+					var width = target.width;
+					var height = target.height;
+
+					let newX = xTarget;
+
+					isOverLink = true;
+				});
+
+				link.addEventListener('mouseleave', function() {
+					isOverLink = false;
+				})
 			});
+
+			if (!isOverLink) {
+				const x = e.clientX;
+				const y = e.clientY;
+
+				gsap.to(this.pos, {
+					x: x,
+					y: y,
+					duration: this.speed,
+					ease: "expo.out",
+				});
+			} else {
+				const x = 500;
+				const y = 500;
+
+				gsap.to(this.pos, {
+					x: x,
+					y: y,
+					duration: this.speed,
+					ease: "expo.out",
+				});
+			}
 			this.loop();
 		};
 		gsap.ticker.add(() => this.loop());
@@ -446,9 +480,11 @@ class Cursor {
 	}
 
 	loop() {
-		const newY = this.pos.y;
-		this.set.x(this.pos.x);
-		this.set.y(newY);
+		const xPos = this.pos.x;
+		const yPos = this.pos.y;
+
+		this.set.x(xPos);
+		this.set.y(yPos);
 	}
 }
 
