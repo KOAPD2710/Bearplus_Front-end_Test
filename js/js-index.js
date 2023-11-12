@@ -21,6 +21,7 @@ function disableScroll() {
 	document.body.style.position = 'fixed';
 	document.body.style.overflowY = 'scroll';
 	document.body.style.top = `-${scrollY}px`;
+	window.scrollTo(0, 0);
 
 	function preventScroll(event) {
 		event.preventDefault();
@@ -401,28 +402,6 @@ function index() {
 		duration: .6,
 		ease: 'none'
 	})
-	gsap.from('#product .imgProduct1', {
-		scrollTrigger: {
-			trigger: '#product .imgProduct1',
-			start: 'top bottom',
-			toggleActions: 'play resume resume reset',
-		},
-		y: 100,
-		opacity: 0,
-		duration: .6,
-		ease: 'none'
-	})
-	gsap.from('#product .imgProduct2', {
-		scrollTrigger: {
-			trigger: '#product .imgProduct2',
-			start: 'top bottom',
-			toggleActions: 'play resume resume reset',
-		},
-		y: 100,
-		opacity: 0,
-		duration: .6,
-		ease: 'none'
-	})
 
 	gsap.to("#footer .footer-grid .grid-net", {
 		y: 27,
@@ -493,7 +472,9 @@ class Cursor {
 		this.set.y(yPos);
 	}
 }
-
+window.addEventListener('load', function() {
+	window.scrollTo(0, 0)
+});
 $(document).ready(function(e){
 	$(document).scrollTop(0);
 	$(window).scrollTop(0);
