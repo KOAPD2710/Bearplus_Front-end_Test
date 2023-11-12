@@ -4,8 +4,8 @@ const lenis = new Lenis({
 	direction: "vertical",
 	gestureDirection: "vertical",
 	smooth: true,
-	smoothTouch: true,
-	touchMultiplier: 1,
+	smoothTouch: false,
+	touchMultiplier: 2,
 	// infinite: true,
 });
 
