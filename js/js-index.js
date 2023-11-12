@@ -65,11 +65,20 @@ function loading() {
 				y: 1000
 			})
 		},
-	}, 0).from("#loading svg .line-base", {
-		opacity: 0,
+	}, 0).to("#loading svg .line-base", {
+		opacity: .2,
 		duration: 1,
+		delay: .5, 
 		ease: "sine.out",
-	}).to("#loading svg .c1 line", {
+	}, 0).to("#loading svg .line-c.c1 line", {
+		opacity: 1,
+		duration: .8,
+		ease: "expo.in",
+		stagger: {
+			each: -.025,
+			ease: "power1.inOut",
+		},
+	}, 1).to("#loading svg .line-c.c2 line", {
 		opacity: 1,
 		duration: .8,
 		ease: "expo.in",
@@ -77,27 +86,19 @@ function loading() {
 			each: -.02,
 			ease: "power1.inOut",
 		},
-	}, 1.5).to("#loading svg .c2 line", {
-		opacity: 1,
-		duration: .8,
-		ease: "expo.in",
-		stagger: {
-			each: -.02,
-			ease: "power1.inOut",
-		},
-	}, 2).to("#loading svg .c3 line", {
+	}, 2).to("#loading svg .line-c.c3 line", {
 		opacity: 1,
 		duration: .8,
 		ease: "expo.in",
 		stagger: {
 			each: -.015,
-			ease: "power1.inOut",
+			ease: "power1.in",
 		},
-	}, 2.5).to("#loading svg", {
+	}, 3).to("#loading svg", {
 		opacity: 0,
 		duration: 1.5,
 		ease: "sine.in",
-	}, 4).to("#loading", {
+	}, 4.5).to("#loading", {
 		opacity: 0,
 		duration: 1.2,
 		onComplete: () => {
@@ -105,7 +106,7 @@ function loading() {
 				display: "none",
 			})
 		}
-	}, 5.5).from("#herosection .logotag, #herosection .textHero.notThis", {
+	}, 5.8).from("#herosection .logotag, #herosection .textHero.notThis", {
 		opacity: 0,
 		y: 80,
 		duration: 1.5,
