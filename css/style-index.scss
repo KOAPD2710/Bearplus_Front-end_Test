@@ -50,6 +50,33 @@ img {
 	pointer-events: none;
 }
 
+a.email {
+	p {
+		position: relative;
+
+		&:before {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			left: auto;
+			width: 0%;
+			height: 1px;
+			background: var(--secondary-white-100);
+			border-radius: 1000px;
+			transition: width .6s cubic-bezier(0.45, 0, 0.55, 1);
+		}
+
+		&:hover {
+			&:before {
+				right: auto;
+				left: 0;
+				width: 100%;
+			}
+		}
+	}
+}
+
 .grid-container	{
 	position: absolute;
 	z-index: 1000000;
@@ -80,7 +107,6 @@ img {
 			opacity: 0%;
 		}
 	}
-
 }
 @media (max-width: 640px) {
 	.grid-container {
@@ -385,7 +411,7 @@ img {
 		left: 0;
 		translate: 25% 10%;
 		width: 550px;
-		z-index: 1;
+		z-index: 0;
 	}
 
 	div{
@@ -663,26 +689,52 @@ img {
 			height: 150%;
 		}
 	}
-	.grid-net {
-		display: inline;
+	.footer-grid {
 		position: absolute;
-		bottom: 0;
-		left: 50%;
-		translate: -50%;
-		width: 180%;
+		top: 50%;
+		width: 100%;
+		height: 50%;
+		overflow: hidden;
+		opacity: .2;
+		transform: perspective(200px) rotateX(45deg) scale(1.1);
 
-		&::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
+		.grid-net {
+			position: relative;
 			width: 100%;
-			height: 50%;
-			background: orange;
-			z-index: 1;
+			height: 400%;
+			background-size: 50px 18px;
+			transform-origin: top center;
+			background-image: linear-gradient(0deg,transparent 24%,#000 25%,#000 26%,transparent 27%,transparent 74%,#000 75%,#000 76%,transparent 77%,transparent),linear-gradient(90deg,transparent 24%,#000 25%,#000 26%,transparent 27%,transparent 74%,#000 75%,#000 76%,transparent 77%,transparent);
+
+			&::before {
+				content: "";
+				position: absolute;
+				display: block;
+				width: 100%;
+				height: 10%;
+				background: linear-gradient(rgba(13, 49, 152, 1) 0%, rgba(10, 45, 147, 1) 50%, transparent 100%);
+			}
 		}
 	}
-	
+	// .grid-net {
+	// 	display: inline;
+	// 	position: absolute;
+	// 	bottom: 0;
+	// 	left: 50%;
+	// 	translate: -50%;
+	// 	width: 180%;
+
+	// 	&::before {
+	// 		content: "";
+	// 		position: absolute;
+	// 		top: 0;
+	// 		left: 0;
+	// 		width: 100%;
+	// 		height: 50%;
+	// 		background: orange;
+	// 		z-index: 1;
+	// 	}
+	// }
 	.content {
 		margin-top: 350px;
 		text-align: center;
@@ -737,8 +789,12 @@ img {
 }
 
 @media (max-width: 640px) {
+	#cursor {
+		display: none;
+	}
 	#navigation {
 		visibility: hidden;
+		display: none;
 	}
 
 	.cta-btn {

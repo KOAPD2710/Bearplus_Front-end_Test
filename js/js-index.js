@@ -401,12 +401,23 @@ function index() {
 		duration: .6,
 		ease: 'none'
 	})
+
+	gsap.to("#footer .footer-grid .grid-net", {
+		y: 27,
+		duration: 1,
+		repeat: -1,
+		ease: "none",
+	})
 }
 class Cursor {
 	constructor(cursorSelector) {
 		this.cursor = $(cursorSelector);
 		this.pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
 		this.set = {};
+
+		var aLinks = gsap.utils.toArray('a');
+		const classNameToFilter = 'notThis';
+		const filteredaLinks = aLinks.filter(aLinks => !aLinks.classList.contains(classNameToFilter));
 
 		// Create quickSetters
 		this.set.x 	= gsap.quickSetter(this.cursor, "x", "px");
