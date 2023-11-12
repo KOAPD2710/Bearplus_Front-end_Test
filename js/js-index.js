@@ -404,22 +404,22 @@ function index() {
 		scrollTrigger: {
 			trigger: '#product .imgProduct1',
 			start: 'top bottom',
+			toggleActions: 'play resume resume reset',
 		},
 		y: 100,
 		opacity: 0,
 		duration: .6,
-		toggleActions: 'play resume resume reset',
 		ease: 'none'
 	})
 	gsap.from('#product .imgProduct2', {
 		scrollTrigger: {
 			trigger: '#product .imgProduct2',
 			start: 'top bottom',
+			toggleActions: 'play resume resume reset',
 		},
 		y: 100,
 		opacity: 0,
 		duration: .6,
-		toggleActions: 'play resume resume reset',
 		ease: 'none'
 	})
 
