@@ -436,30 +436,14 @@ class Cursor {
 					var yTarget = target.top;
 					var width = target.width;
 					var height = target.height;
-
+					
 					let newX = xTarget;
-
-					isOverLink = true;
 				});
-
-				link.addEventListener('mouseleave', function() {
-					isOverLink = false;
-				})
 			});
 
 			if (!isOverLink) {
 				const x = e.clientX;
 				const y = e.clientY;
-
-				gsap.to(this.pos, {
-					x: x,
-					y: y,
-					duration: this.speed,
-					ease: "expo.out",
-				});
-			} else {
-				const x = 500;
-				const y = 500;
 
 				gsap.to(this.pos, {
 					x: x,
